@@ -11,6 +11,7 @@ app.use(bodyParser.json())
 
 const getGames = (request, response) => {
     pool.query('SELECT * FROM Games', (error, results) => {
+        console.log(results)
       if (error) {
         throw error
       }
