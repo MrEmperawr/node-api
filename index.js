@@ -22,7 +22,7 @@ const addGame = (request, response) => {
   const { title, genre, developer_studio, release_date, metacritic_score, steam_review, publisher } = request.body
 
   pool.query(
-    'INSERT INTO books (title, genre, developer_studio, release_date, metacritic_score, steam_review, publisher) VALUES ($1, $2, $3, $4, $5, $6, $7)', 
+    'INSERT INTO games (title, genre, developer_studio, release_date, metacritic_score, steam_review, publisher) VALUES ($1, $2, $3, $4, $5, $6, $7)', 
     [title, genre, developer_studio, release_date, metacritic_score, steam_review, publisher], error => {
         if (error) {
         throw error
