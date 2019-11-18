@@ -32,7 +32,7 @@ const addGame = (request, response) => {
 }
 
 app
-  .route('/books')
+  .route('/games')
   .get(getGames)
   .post(addGame)
 
