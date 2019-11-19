@@ -1,1 +1,1 @@
-module.exports = require('./gamesService')
+module.exports = require('./controllers')
