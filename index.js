@@ -10,6 +10,10 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get(`/`, (request, response) => {
+  response.send('This is the first test response! from the home route: /')
+});
+
 app
   .route('/games')
   .get(getGames)
@@ -22,9 +26,6 @@ app
   .delete(deleteGame)
 
   
-  app.get(`/`, (request, response) => {
-    response.send('This is the first test response! from the home route: /')
-  });
 
 
   app.listen(PORT, () => console.log(`The Server is up and running on port ${PORT}`))
