@@ -15,17 +15,17 @@ const getTopGameByMetacriticScore = (request, response) => {
 }
 
 const getPositiveReviews = (request, response) => {
-    pool.query('SELECT title, steam_review FROM Games WHERE steam_review = Very Positive OR steam_review = Overwhelmingly Positive', (error, results) => {
+    pool.query("SELECT title, steam_review FROM Games WHERE steam_review='Very Positive' OR steam_review='Overwhelmingly Positive' ORDER BY steam_review", (error, results) => {
         if (error) throw error
         response.status(200).json(results.rows)
     })
 }
 
-const getPositiveReviews = (request, response) => {
+const getAllReviews = (request, response) => {
     pool.query('SELECT title, steam_review FROM Games ORDER BY steam_review DESC', (error, results) => {
         if (error) throw error
         response.status(200).json(results.rows)
     })
 }
 
-module.exports = { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews }
+module.exports = { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews, getAllReviews }

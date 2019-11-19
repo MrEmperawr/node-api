@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const { getGames, addGame, updateGame, getGameByID, deleteGame } = require('./routes/games')
-const { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews} = require('./routes/stats')
+const { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews, getAllReviews } = require('./routes/stats')
 
 const PORT = 3002
 const app = express()
@@ -28,13 +28,17 @@ app
   .delete(deleteGame)
 
 app
-  .route('/stats/average')
+  .route('/stats/metacritic/average')
   .get(getAverageMetacriticScore)
 
 app
-  .route('/stats/topscore')
+  .route('/stats/metacritic/topscore')
   .get(getTopGameByMetacriticScore)
 
+app
+  .route('/stats/reviews')
+  .get(getAllReviews)
+  
 app
   .route('/stats/reviews/positive')
   .get(getPositiveReviews)
