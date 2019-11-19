@@ -1,6 +1,5 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const cors = require('cors')
 
 const { getGames, addGame, updateGame, getGameByID, deleteGame } = require('./routes/games')
 const { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews, getAllReviews } = require('./routes/stats')
@@ -38,7 +37,7 @@ app
 app
   .route('/stats/reviews')
   .get(getAllReviews)
-  
+
 app
   .route('/stats/reviews/positive')
   .get(getPositiveReviews)
