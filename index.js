@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const { getGames, addGame, updateGame, getGameByID, deleteGame } = require('./routes/games')
-const { getAverageMetacriticScore, getTopGameByMetacriticScore} = require('./routes/stats')
+const { getAverageMetacriticScore, getTopGameByMetacriticScore, getPositiveReviews} = require('./routes/stats')
 
 const PORT = 3002
 const app = express()
@@ -35,7 +35,9 @@ app
   .route('/stats/topscore')
   .get(getTopGameByMetacriticScore)
 
-  
+app
+  .route('/stats/reviews/positive')
+  .get(getPositiveReviews)
 
 
   app.listen(PORT, () => console.log(`The Server is up and running on port ${PORT}`))
