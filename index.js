@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const { getGames, addGame, updateGame, getGameByID, deleteGame } = require('./routes/games')
+const { getAverageMetacriticScore, getTopGameByMetacriticScore} = require('./routes/stats')
 
 const PORT = 3002
 const app = express()
@@ -11,7 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get(`/`, (request, response) => {
-  response.send('This is the first test response! from the home route: /')
+  console.log(getAverageMetacriticScore)
+  response.send('Games from my Steam Library! Try .../games and/or .../stats for some results and such!')
 });
 
 app
@@ -24,6 +26,14 @@ app
   .get(getGameByID)
   .put(updateGame)
   .delete(deleteGame)
+
+app
+  .route('/stats/average')
+  .get(getAverageMetacriticScore)
+
+app
+  .route('/stats/topscore')
+  .get(getTopGameByMetacriticScore)
 
   
 
